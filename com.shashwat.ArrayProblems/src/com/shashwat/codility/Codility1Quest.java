@@ -8,7 +8,7 @@ package com.shashwat.codility;
  * is the same as the number of elements different from X in the other part.
  * More formally, we are looking for an index K such that: 0 ≤ K < N and the number of 
  * elements equal to X in A[0..K−1] is the same as the number of elements different 
- * from X in A[K..N−1]. For K = 0, A[0..K−1] does not contain any elements.
+ * from X in A[K..Na�1]. For K = 0, A[0..K−1] does not contain any elements.
  */
 
 public class Codility1Quest {
