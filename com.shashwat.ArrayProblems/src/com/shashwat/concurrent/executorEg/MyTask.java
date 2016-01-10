@@ -1,10 +1,10 @@
 package com.shashwat.concurrent.executorEg;
 
-public class MyWork implements Runnable {
+public class MyTask implements Runnable {
 	private final int SIZE = 5;
 	private String id;
 
-	public MyWork(String id) {
+	public MyTask(String id) {
 		this.id = id;
 	}
 
