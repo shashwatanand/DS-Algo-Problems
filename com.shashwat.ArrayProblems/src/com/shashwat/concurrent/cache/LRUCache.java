@@ -3,6 +3,12 @@ package com.shashwat.concurrent.cache;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
+/**
+ * Class LRU Cache
+ * @author Shashwat
+ * @param <Key>
+ * @param <Value>
+ */
 public class LRUCache<Key, Value> {
 	private final int MAX_SIZE;
 	private ConcurrentHashMap<Key, Value> map;
