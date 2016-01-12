@@ -1,4 +1,4 @@
-package com.shashwat.commandPattern;
+package com.shashwat.commandPattern.processors;
 
 public interface FileProcessor {
 	void openFile();

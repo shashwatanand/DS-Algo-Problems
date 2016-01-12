@@ -1,6 +1,6 @@
 package com.shashwat.commandPattern.commands;
 
-import com.shashwat.commandPattern.FileProcessor;
+import com.shashwat.commandPattern.processors.FileProcessor;
 
 public class WriteFileProcessor implements Command {
 	private FileProcessor fileProcessor;
