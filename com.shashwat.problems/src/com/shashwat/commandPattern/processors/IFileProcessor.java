@@ -1,6 +1,6 @@
 package com.shashwat.commandPattern.processors;
 
-public interface FileProcessor {
+public interface IFileProcessor {
 	void openFile();
 	void writeFile();
 	void closeFile();
