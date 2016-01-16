@@ -1,11 +1,11 @@
 package com.shashwat.commandPattern.commands;
 
-import com.shashwat.commandPattern.processors.FileProcessor;
+import com.shashwat.commandPattern.processors.IFileProcessor;
 
 public class WriteFileProcessor implements Command {
-	private FileProcessor fileProcessor;
+	private IFileProcessor fileProcessor;
 	
-	public WriteFileProcessor(FileProcessor fileProcessor) {
+	public WriteFileProcessor(IFileProcessor fileProcessor) {
 		this.fileProcessor = fileProcessor;
 	}
 	

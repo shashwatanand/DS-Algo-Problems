@@ -1,6 +1,6 @@
 package com.shashwat.commandPattern.processors;
 
-public class UnixFileProcessor implements FileProcessor {
+public class UnixFileProcessor implements IFileProcessor {
 	@Override
 	public void openFile() {
 		System.out.println("Opening file in UNIX OS");

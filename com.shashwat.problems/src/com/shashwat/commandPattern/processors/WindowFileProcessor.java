@@ -1,6 +1,6 @@
 package com.shashwat.commandPattern.processors;
 
-public class WindowFileProcessor implements FileProcessor {
+public class WindowFileProcessor implements IFileProcessor {
 	@Override
 	public void openFile() {
 		System.out.println("Opening file in Windows OS");

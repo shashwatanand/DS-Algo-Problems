@@ -1,11 +1,11 @@
 package com.shashwat.commandPattern.commands;
 
-import com.shashwat.commandPattern.processors.FileProcessor;
+import com.shashwat.commandPattern.processors.IFileProcessor;
 
 public class CloseFileProcessor implements Command {
-	private FileProcessor fileProcessor;
+	private IFileProcessor fileProcessor;
 	
-	public CloseFileProcessor(FileProcessor fileProcessor) {
+	public CloseFileProcessor(IFileProcessor fileProcessor) {
 		this.fileProcessor = fileProcessor;
 	}
 	
