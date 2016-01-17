@@ -6,10 +6,13 @@ import java.util.Map;
 import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
+import org.eclipse.jface.viewers.EditingSupport;
 import org.eclipse.jface.viewers.ICellModifier;
 import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
+import org.eclipse.jface.viewers.TreeViewerColumn;
 import org.eclipse.jface.viewers.TreeViewerEditor;
+import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
@@ -59,7 +62,41 @@ public class TreeviewerShell {
 		}, TreeViewerEditor.DEFAULT);
 		
 		TextCellEditor cellEditor = new TreeviewerCellEditor(treeviewer.getTree());
-		enableEditingFirst(treeviewer, cellEditor);
+		//enableEditingFirst(treeviewer, cellEditor);
+		
+		enableEditingSecond(treeviewer);
+	}
+
+	private void enableEditingSecond(final TreeViewer treeviewer) {
+		final TreeViewerColumn column = new TreeViewerColumn(treeviewer, SWT.NONE);
+		column.getColumn().setWidth(150);
+		column.setLabelProvider(new TreeviewerLabelProvider());
+		column.setEditingSupport(new EditingSupport(treeviewer) {
+			
+			@Override
+			protected void setValue(Object element, Object value) {
+				if (element instanceof TreeData) {
+					TreeData treeData = (TreeData) element;
+					treeData.setData(value.toString());
+				}
+				treeviewer.update(element, null);
+			}
+			
+			@Override
+			protected Object getValue(Object element) {
+				return element.toString();
+			}
+			
+			@Override
+			protected CellEditor getCellEditor(Object element) {
+				return new TreeviewerCellEditor(treeviewer.getTree());
+			}
+			
+			@Override
+			protected boolean canEdit(Object element) {
+				return true;
+			}
+		});
 	}
 
 	private void enableEditingFirst(TreeViewer treeviewer, TextCellEditor cellEditor) {
