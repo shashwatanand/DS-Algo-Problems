@@ -12,4 +12,8 @@ public class TreeData {
 		//return "TreeData [data=" + data + "]";
 		return data;
 	}
+	
+	public void setData(String data) {
+		this.data = data;
+	}
 }
