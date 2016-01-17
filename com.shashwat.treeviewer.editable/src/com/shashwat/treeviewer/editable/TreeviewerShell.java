@@ -3,13 +3,18 @@ package com.shashwat.treeviewer.editable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.eclipse.jface.viewers.CellEditor;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationEvent;
 import org.eclipse.jface.viewers.ColumnViewerEditorActivationStrategy;
+import org.eclipse.jface.viewers.ICellModifier;
+import org.eclipse.jface.viewers.TextCellEditor;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.TreeViewerEditor;
 import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.TreeItem;
 
 import com.shashwat.treeviewer.editable.model.TreeData;
+import com.shashwat.treeviewer.editable.treeviewSupport.TreeviewerCellEditor;
 import com.shashwat.treeviewer.editable.treeviewSupport.TreeviewerContentProvider;
 import com.shashwat.treeviewer.editable.treeviewSupport.TreeviewerLabelProvider;
 
@@ -43,7 +48,7 @@ public class TreeviewerShell {
 	private void createUi(Shell shell) {
 		TreeViewer treeviewer = new TreeViewer(shell);
 		treeviewer.setContentProvider(new TreeviewerContentProvider());
-		treeviewer.setLabelProvider(new TreeviewerLabelProvider());
+		//treeviewer.setLabelProvider(new TreeviewerLabelProvider());
 		treeviewer.setInput(this.data);
 		
 		TreeViewerEditor.create(treeviewer, new ColumnViewerEditorActivationStrategy(treeviewer){
@@ -52,5 +57,36 @@ public class TreeviewerShell {
 				return event.eventType == ColumnViewerEditorActivationEvent.MOUSE_DOUBLE_CLICK_SELECTION;
 			}
 		}, TreeViewerEditor.DEFAULT);
+		
+		TextCellEditor cellEditor = new TreeviewerCellEditor(treeviewer.getTree());
+		enableEditingFirst(treeviewer, cellEditor);
+	}
+
+	private void enableEditingFirst(TreeViewer treeviewer, TextCellEditor cellEditor) {
+		treeviewer.setColumnProperties(new String[] {"Column"});
+		treeviewer.setLabelProvider(new TreeviewerLabelProvider());
+		treeviewer.setCellEditors(new CellEditor[] {cellEditor});
+		treeviewer.setCellModifier(new ICellModifier() {
+			
+			@Override
+			public void modify(Object element, String property, Object value) {
+				if (element instanceof TreeItem) {
+					TreeItem treeItem = (TreeItem)element;
+					TreeData treeData = (TreeData)treeItem.getData();
+					treeData.setData(value.toString());
+					treeItem.setText(value.toString());
+				}
+			}
+			
+			@Override
+			public Object getValue(Object element, String property) {
+				return element.toString();
+			}
+			
+			@Override
+			public boolean canModify(Object element, String property) {
+				return true;
+			}
+		});
 	}
 }
