@@ -8,7 +8,7 @@ package com.shashwat.arrayProblems;
 public class FindPairSum {
 	private final static int MAX_ELEMENTS = 100;
 	public static void main(String[] args) {
-		int[] array = {1 ,5 , 4, 6, 45, 8, 6};
+		int[] array = {51 ,2, 4, 6, 45, 8, 6};
 		int sum = 53;
 		printPairs(array, sum);
 	}
