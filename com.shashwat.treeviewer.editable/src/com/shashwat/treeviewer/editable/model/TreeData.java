@@ -9,6 +9,7 @@ public class TreeData {
 
 	@Override
 	public String toString() {
-		return "TreeData [data=" + data + "]";
+		//return "TreeData [data=" + data + "]";
+		return data;
 	}
 }
