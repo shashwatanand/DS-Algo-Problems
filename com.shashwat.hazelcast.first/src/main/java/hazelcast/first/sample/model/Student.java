@@ -6,13 +6,12 @@ public class Student implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long serialVersionUID = 1L;	
+	private String studentId;
 	private String firstName;
 	private String lastName;
-	private String studentId;
 
-	public Student(String firstName, String lastName, String studentId) {
+	public Student(String studentId, String firstName, String lastName) {
 		super();
 		this.studentId = studentId;
 		this.firstName = firstName;
