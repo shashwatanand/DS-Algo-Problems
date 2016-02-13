@@ -17,7 +17,7 @@ public class CyclicBarrierDemo {
 				System.out.println(Thread.currentThread().getName() + " is waiting for barrier");
 				barrier.await();
 				System.out.println(Thread.currentThread().getName() + " is crossed the barrier");
-			} catch (InterruptedException ie) {
+			} catch (InterruptedException iee) {
 				ie.printStackTrace();
 			} catch(BrokenBarrierException bbe) {
 				bbe.printStackTrace();
