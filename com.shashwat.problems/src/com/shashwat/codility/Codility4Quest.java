@@ -6,13 +6,9 @@ package com.shashwat.codility;
  * A = [1,2,3,4,5]
  * should result in true because it is already sorted.
  * A = [1,2,5,4,3]
-
-should result in true because with one swap, involving 5 and 3, the list is sorted.
-
-A = [1,2,5,3,4]
-
-should result in false because it requires more than one swap to sort.
-
+ * should result in true because with one swap, involving 5 and 3, the list is sorted.
+ * A = [1,2,5,3,4]
+ * should result in false because it requires more than one swap to sort.
  */
 
 public class Codility4Quest {
